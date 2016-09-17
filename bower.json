@@ -12,7 +12,7 @@
     "angular-promise-buttons": "^0.1.14",
     "ngstorage": "^0.3.11",
     "material-angular-paging": "*",
-    "angular-filter": "^0.5.11"
+    "underscore": "^1.8.3"
   },
   "overrides": {
     "material-angular-paging": {

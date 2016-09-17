@@ -28,13 +28,13 @@
         }
       })
       .state('app.home', {
-        url: '/',
+        url: '/{page}',
         title: 'Home',
         resolve: {
           data: function (WebsitesModel) {
             return WebsitesModel.query({type:'json', query: 'list_websites'}).then(function (res) {
               return res.websites;
-            })
+            });
           }
         },
         views: {

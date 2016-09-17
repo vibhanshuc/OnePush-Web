@@ -5,6 +5,9 @@
       <input ng-model="vm.search" placeholder="Search">
       <ng-md-icon icon="search"></ng-md-icon>
     </md-input-container>
+    <label>
+      Total of {{vm.total}} results found!
+    </label>
   </md-card>
 </div>
 <md-button class="md-fab md-primary md-hue-2 right-bottom" aria-label="Add a portfolio" ng-click="vm.addPortfolio($event)">
@@ -15,7 +18,7 @@
     <md-card-content class="p-0">
       <md-list class="portfolio-list p-0">
         <md-list-item class="md-3-line"
-                      ng-repeat="item in vm.portfolios | filterBy: ['title', 'url_address']: vm.search">
+                      ng-repeat="item in vm.portfolios | filter: vm.searchFunction(vm.search)">
           <img class="md-avatar-icon" ng-src="{{item.favicon_image}}"/>
 
           <div class="md-list-item-text" layout="column">
@@ -32,6 +35,7 @@
           <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
       </md-list>
+      <span ng-if="!vm.portfolios.length">Nothing found!</span>
     </md-card-content>
   </md-card>
 </div>

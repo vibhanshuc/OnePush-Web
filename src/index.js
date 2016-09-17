@@ -13,8 +13,8 @@
       'cfp.loadingBar',
       'angularPromiseButtons',
       'ngStorage',
-      'cl.paging',
-    'angular.filter'])
-    .constant('API', 'https://hackerearth.0x10.info/api/one-push');
+      'cl.paging'])
+    .constant('API', 'https://hackerearth.0x10.info/api/one-push')
+    .constant('_', window._);
 
 }());

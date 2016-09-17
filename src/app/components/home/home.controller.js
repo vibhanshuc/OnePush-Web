@@ -12,25 +12,42 @@
    * */
 
   /** @ngInject **/
-  function HomeController(data, Pagination, $mdDialog, WebsitesModel, $mdToast) {
-
-    var vm = this;
+  function HomeController(data, Pagination, $mdDialog, WebsitesModel, $mdToast, $stateParams, $state) {
+    var vm = this,
+        pages = Pagination.paginate(4, data);
 
     $mdToast.showSimple('Welcome to OnePush');
 
-    var pages = Pagination.paginate(5, data);
-
-    vm.currentPage = 0;
+    vm.total = data.length;
 
     vm.paging = {
       total: pages.length,
-      current: 1,
+      current: ($stateParams.page && (typeof parseInt(10, $stateParams.page)=== 'number')) ? ($stateParams.page > pages.length ? pages.length : $stateParams.page) : 1,
       align: 'center start',
       onPageChanged: loadPages
     };
 
+
+    vm.searchFunction = function (query) {
+      var result;
+      if(query){
+        result = _.filter(data, function (item) {
+          return item.title.includes(query) || item.tag.includes(query) || item.url_address.includes(query);
+        });
+      } else {
+        result = data;
+      }
+
+      pages = Pagination.paginate(4, result);
+
+      vm.portfolios = pages.length?pages[vm.paging.current - 1].items: [];
+
+      vm.paging.total = pages.length;
+
+    };
+
     function loadPages() {
-      vm.portfolios = pages[vm.paging.current - 1].items;
+      vm.portfolios = pages.length? pages[vm.paging.current - 1].items: [];
       vm.currentPage = vm.paging.current;
     }
 
@@ -38,10 +55,6 @@
       $mdDialog.show({
         controller: function () {
           var vm = this;
-
-          vm.title = 'Vibhanshu Chaturvedi';
-          vm.url_address = 'https://github.com/vibhanshuc';
-          vm.tag = 'Personal';
 
           vm.cancel = function () {
             $mdDialog.hide();
@@ -55,7 +68,6 @@
               url_address: vm.url_address,
               tag: vm.tag
             }).then(function (res) {
-              console.log(parseInt(res.status), res.message);
               if(parseInt(res.status) === 403) {
                 $mdToast.showSimple(res.message);
               } else {
@@ -82,7 +94,7 @@
   angular.module('app')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['data', 'Pagination', '$mdDialog', 'WebsitesModel', '$mdToast'];
+  HomeController.$inject = ['data', 'Pagination', '$mdDialog', 'WebsitesModel', '$mdToast', '$stateParams', '$state'];
 
 }());
 
