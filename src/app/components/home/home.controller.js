@@ -37,8 +37,9 @@
     vm.searchFunction = function (query) {
       var result;
       if(query){
+        query = query.toLowerCase();
         result = _.filter(data, function (item) {
-          return item.title.includes(query) || item.tag.includes(query) || item.url_address.includes(query);
+          return item.title.toLowerCase().includes(query) || item.tag.toLowerCase().includes(query) || item.url_address.toLowerCase().includes(query);
         });
       } else {
         result = data;
