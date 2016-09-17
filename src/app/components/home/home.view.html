@@ -2,7 +2,7 @@
   <md-card flex flex-gt-sm="90" flex-gt-md="80" layout-padding>
     <md-input-container flex class="search-container">
       <label>&nbsp;</label>
-      <input ng-model="vm.search" placeholder="Search">
+      <input ng-model="vm.search" placeholder="Search by title, url or tag">
       <ng-md-icon icon="search"></ng-md-icon>
     </md-input-container>
     <label>
@@ -18,12 +18,11 @@
     <md-card-content class="p-0">
       <md-list class="portfolio-list p-0">
         <md-list-item class="md-3-line"
-                      ng-repeat="item in vm.portfolios | filter: vm.searchFunction(vm.search)">
+                      ng-repeat="item in vm.portfolios | filter: vm.searchFunction(vm.search) | orderBy: '-likes'">
           <img class="md-avatar-icon" ng-src="{{item.favicon_image}}"/>
 
           <div class="md-list-item-text" layout="column">
             <h3>{{item.title}}</h3>
-
             <a class="ellipsis" href="{{item.url_address}}" target="_blank">
               <ng-md-icon icon="open_in_new"></ng-md-icon>
               {{item.url_address}}
@@ -31,6 +30,10 @@
           </div>
           <div class="tag">
             {{item.tag}}
+          </div>
+          <div class="like" ng-click="vm.addLike(item)">
+            {{item.likes}}
+            <ng-md-icon icon="thumb_up"></ng-md-icon>
           </div>
           <md-divider ng-if="!$last"></md-divider>
         </md-list-item>

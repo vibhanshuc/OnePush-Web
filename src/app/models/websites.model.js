@@ -11,7 +11,8 @@
         title: null,
         favicon_image: null,
         url_address: null,
-        tag: null
+        tag: null,
+        likes: 0
       },
       actions: {
         query: {

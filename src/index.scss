@@ -38,7 +38,7 @@ md-content.md-default-theme, md-content {
 
 .right-bottom {
   position: absolute;
-  bottom: 80px;
+  bottom: 35px;
   right: 40px;
 }
 
@@ -72,6 +72,15 @@ md-toolbar.md-hue-1:not(.md-menu-toolbar) {
     border-radius: 5px;
     padding: 5px;
     color: black;
+  }
+
+  div.like {
+    position: absolute;
+    margin-top: 5px;
+    right: 15px;
+    bottom: 15px;
+    outline: none;
+    cursor: pointer;
   }
 }
 

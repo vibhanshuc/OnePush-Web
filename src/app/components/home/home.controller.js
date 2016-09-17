@@ -12,9 +12,15 @@
    * */
 
   /** @ngInject **/
-  function HomeController(data, Pagination, $mdDialog, WebsitesModel, $mdToast, $stateParams, $state) {
+  function HomeController(data, Pagination, $mdDialog, WebsitesModel, $mdToast, $stateParams, $localStorage) {
     var vm = this,
         pages = Pagination.paginate(4, data);
+
+    $localStorage.likeCounts = $localStorage.likeCounts || {};
+
+    angular.forEach(data, function (item) {
+      item.likes = $localStorage.likeCounts[item.id] || 0;
+    });
 
     $mdToast.showSimple('Welcome to OnePush');
 
@@ -88,13 +94,19 @@
       });
     };
 
+    vm.addLike = function (item) {
+        var likes, counts = $localStorage.likeCounts;
+        likes = counts && counts[item.id]? counts[item.id]: 0;
+        item.likes = counts[item.id] = likes + 1;
+    };
+
 
   }
 
   angular.module('app')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['data', 'Pagination', '$mdDialog', 'WebsitesModel', '$mdToast', '$stateParams', '$state'];
+  HomeController.$inject = ['data', 'Pagination', '$mdDialog', 'WebsitesModel', '$mdToast', '$stateParams', '$localStorage'];
 
 }());
 
