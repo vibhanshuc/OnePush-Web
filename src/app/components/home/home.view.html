@@ -1,0 +1,39 @@
+<div layout="row" layout-align="center center">
+  <md-card flex flex-gt-sm="90" flex-gt-md="80" layout-padding>
+    <md-input-container flex class="search-container">
+      <label>&nbsp;</label>
+      <input ng-model="vm.search" placeholder="Search">
+      <ng-md-icon icon="search"></ng-md-icon>
+    </md-input-container>
+  </md-card>
+</div>
+<md-button class="md-fab md-primary md-hue-2 right-bottom" aria-label="Add a portfolio" ng-click="vm.addPortfolio($event)">
+  <ng-md-icon icon="add"></ng-md-icon>
+</md-button>
+<div layout="row" layout-align="center center">
+  <md-card flex flex-gt-sm="90" flex-gt-md="80">
+    <md-card-content class="p-0">
+      <md-list class="portfolio-list p-0">
+        <md-list-item class="md-3-line"
+                      ng-repeat="item in vm.portfolios | filterBy: ['title', 'url_address']: vm.search">
+          <img class="md-avatar-icon" ng-src="{{item.favicon_image}}"/>
+
+          <div class="md-list-item-text" layout="column">
+            <h3>{{item.title}}</h3>
+
+            <a class="ellipsis" href="{{item.url_address}}" target="_blank">
+              <ng-md-icon icon="open_in_new"></ng-md-icon>
+              {{item.url_address}}
+            </a>
+          </div>
+          <div class="tag">
+            {{item.tag}}
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>
+<cl-paging flex cl-pages="vm.paging.total" cl-steps="6" cl-page-changed="vm.paging.onPageChanged()" cl-align="center"
+           cl-current-page="vm.paging.current"></cl-paging>

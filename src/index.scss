@@ -1,0 +1,80 @@
+$main-backgorund-color: lightgrey;
+
+body {
+  background-color: $main-backgorund-color;
+}
+
+md-content.md-default-theme, md-content {
+  background-color: $main-backgorund-color;
+}
+
+.logo {
+  h2 {
+    margin-top: 7px;
+  }
+}
+
+.md-avatar-icon {
+  height: 50px;
+}
+
+.ellipsis {
+  width: 400px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.search-container {
+  padding: 0;
+  margin: 0;
+  height: 40px;
+
+  ng-md-icon {
+    right: 0;
+    left: auto;
+  }
+}
+
+.right-bottom {
+  position: absolute;
+  bottom: 80px;
+  right: 40px;
+}
+
+md-toolbar.md-hue-1:not(.md-menu-toolbar) {
+  button {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+  }
+  md-input-container {
+    margin-top: 40px;
+  }
+  background-color: white;
+  color: black;
+}
+
+.portfolio-list {
+  h3 {
+    font-size: 20px !important;
+  }
+  a {
+    font-size: 18px;
+    text-decoration: none;
+    margin: 2px;
+    color: brown;
+  }
+  div.tag {
+    text-transform: capitalize;
+    margin-top: 5px;
+    background-color: #FFA308;
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+  }
+}
+
+md-content {
+  padding-bottom: 20px;
+}

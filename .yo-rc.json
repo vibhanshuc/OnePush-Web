@@ -1,0 +1,24 @@
+{
+  "generator-mocha": {},
+  "generator-fountain-angular1": {
+    "version": "0.7.2",
+    "props": {
+      "framework": "angular1",
+      "modules": "inject",
+      "js": "js",
+      "ci": [
+        "circleci"
+      ],
+      "css": "scss",
+      "resolved": "/home/vibhanshu/.nvm/versions/node/v5.1.0/lib/node_modules/generator-fountain-webapp/node_modules/generator-fountain-angular1/generators/app/index.js",
+      "namespace": "fountain-angular1",
+      "argv": {
+        "remain": [],
+        "cooked": [],
+        "original": []
+      },
+      "sample": "hello",
+      "router": "uirouter"
+    }
+  }
+}

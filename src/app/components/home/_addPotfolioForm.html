@@ -1,0 +1,36 @@
+<md-dialog flex aria-label="Add Portfolio">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add a portfolio</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <ng-md-icon icon="close" aria-label="Close dialog"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout-padding>
+      <form name="form" layout="column">
+        <md-input-container flex class="md-block">
+          <input name="title" ng-model="vm.title" placeholder="Title" required>
+        </md-input-container>
+        <md-input-container flex class="md-block">
+          <input name="website" type="url" ng-model="vm.url_address" placeholder="URL address/ Website" required>
+        </md-input-container>
+        <md-input-container flex class="md-block">
+          <input name="tag" type="text" ng-model="vm.tag" placeholder="Tag" required>
+        </md-input-container>
+      </form>
+
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="vm.cancel()">
+        Cancel
+      </md-button>
+      <span flex></span>
+      <md-button type="submit" ng-click="vm.submit()">
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

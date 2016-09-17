@@ -1,0 +1,25 @@
+{
+  "name": "fountain-inject",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "1.0.0-beta.1",
+    "angular-model-factory": "^1.0.3",
+    "angular-material": "^1.1.1",
+    "angular-loading-bar": "^0.9.0",
+    "angular-material-icons": "^0.7.1",
+    "ngStorage": "ngStorage#^0.3.2",
+    "angular-promise-buttons": "^0.1.14",
+    "ngstorage": "^0.3.11",
+    "material-angular-paging": "*",
+    "angular-filter": "^0.5.11"
+  },
+  "overrides": {
+    "material-angular-paging": {
+      "main": "build/dist.min.js"
+    }
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.0"
+  }
+}
